@@ -75,7 +75,7 @@ export default {
         created(){
            this.getFriends();
            Echo.channel("Chat").listen("SessionEvent",e => {
-               let friend = this.friends.find(friend.id == e.session_by);
+               let friend = this.friends.find(friend => friend.id == e.session_by);
                friend.session = e.session;
                });
            Echo.join('Chat')
@@ -85,7 +85,7 @@ export default {
                        if(user.id == friend.id){
                         friend.online = true
                    }
-               })
+               });
            })
      })
      .joining((user) => {
